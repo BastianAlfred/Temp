@@ -1,16 +1,27 @@
-# Compiler
+# Specifie Compiler
 CC = gcc
-CCFLAGS = -std=c99
-OBJ = main.o
 
+# Set Compiler Settings
+CCFLAGS = -std=c99 -g
+
+# Set Linker Settings
+LDFLAGS = -lm
+
+# Set Object file
+OBJ = src/main.o
+
+# Clean target
 .PHONY: clean
 
-run: $(OBJ)
-	$(CC) $(CCFLAGS) -o run $(OBJ)
+# Link object files to target "prog"
+prog: $(OBJ)
+	$(CC) $(CCFLAGS) -o run  $(OBJ) $(LDFLAGS)
 
-main.o: main.c
-	$(CC) $(CCFLAGS) -c main.c
+# Compile source file into object file
+main.o: src/main.c
+	$(CC) $(CCFLAGS) -c src/main.c
 
+# Clean target
 clean:
-	rm -f *.o
+	rm -f ./src/*.o
 	rm -f run
