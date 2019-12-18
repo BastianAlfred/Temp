@@ -1,0 +1,6 @@
+# Ignore the run executable
+run
+
+# Ignore all object files in the src directory
+src/*.o
+
